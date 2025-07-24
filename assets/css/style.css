@@ -1,0 +1,234 @@
+html{
+  scroll-behavior: smooth;
+}
+.button-menu {
+  font-family: inherit;
+  font-size: 18px;
+  background: linear-gradient(to bottom, #4dc7d9 0%,#66a6ff 100%);
+  color: white;
+  padding: 0.3em 0.6em; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  border: none;
+  border-radius: 25px; 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  position: fixed; /* Penting untuk posisi melayang */
+  top: 20px; /* Jarak dari atas */
+  right: 20px; /* Jarak dari kanan */
+  z-index: 9999; 
+}
+
+.button-menu:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-menu:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.button-menu i { 
+  font-size: 1.2rem;
+  fill: white;
+  transition: all 0.3s;
+}
+
+.button-menu .i-wrapper {
+  display: flex;
+  align-items: center;   
+  justify-content: center; 
+  width: 35px;   
+  height: 35px;          
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+
+.button-menu:hover i {
+  transform: rotate(45deg);
+}
+
+/* CSS untuk Offcanvas */
+  .offcanvas {
+  background-color: #343a40; 
+  color: white;
+  }
+      
+  #spaceVideoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%; 
+  min-height: 100%; 
+  width: auto;
+  height: auto;
+  z-index: -1; 
+  background-size: cover; 
+  opacity: 0.5; 
+  filter: brightness(1.1); 
+  object-fit: cover;
+}
+
+.fullscreen-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2; 
+    background-size: cover;
+    opacity: 2.5;
+    filter: brightness(1.1);
+    object-fit: cover;
+}
+
+      .offcanvas-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .offcanvas-title {
+        color: white;
+      }
+
+      .offcanvas-body .nav-link {
+        color: rgba(255, 255, 255, 0.7);
+        padding: 0.8rem 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .offcanvas-body .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: white;
+      }
+
+      .offcanvas-body .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: white;
+      }
+
+.sosmed {
+  display: inline-flex;
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+  align-items: center; 
+}
+
+.sosmed .icon {
+  position: relative;
+  background: #fff; /* Ini akan berubah saat hover */
+  border-radius: 50%;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  /* font-size: 18px; <--- Ini akan jadi font-size default untuk teks/ikon di dalamnya */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Biarkan column jika Anda ingin tooltip di atas ikon */
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Gaya untuk ikon Bootstrap di dalamnya */
+.sosmed .icon i {
+  color: #333; /* Warna ikon default (akan berubah saat hover) */
+  font-size: 24px; /* UKURAN IKON BOOTSTRAP, sesuaikan ini! */
+  transition: color 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.sosmed .tooltip {
+  position: absolute;
+  top: 0; /* Awalnya di atas icon, akan bergerak ke -45px saat hover */
+  font-size: 14px;
+  background: #fff; /* Ini akan berubah saat hover */
+  color: #fff; /* Warna teks tooltip default */
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.sosmed .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #fff; /* Ini akan berubah saat hover */
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.sosmed .icon:hover .tooltip {
+  top: -45px; /* Pindah ke atas saat hover */
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Warna ikon saat hover */
+.sosmed .icon:hover i {
+  color: #fff; /* Ubah warna ikon menjadi putih saat hover */
+}
+
+
+/* Efek text-shadow pada span dan tooltip saat hover, sesuai CSS Anda */
+.sosmed .icon:hover span,
+.sosmed .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Warna Spesifik untuk Setiap Sosmed saat Hover --- */
+
+.sosmed .facebook:hover,
+.sosmed .facebook:hover .tooltip,
+.sosmed .facebook:hover .tooltip::before {
+  background: #1877f2; /* Warna background ikon, tooltip, dan panah tooltip */
+  color: #fff; /* Warna teks tooltip */
+}
+
+.sosmed .instagram:hover,
+.sosmed .instagram:hover .tooltip,
+.sosmed .instagram:hover .tooltip::before {
+  background: #e4405f;
+  color: #fff;
+}
+
+/* Tambahkan warna untuk sosmed lain jika Anda tambahkan di HTML */
+.sosmed .twitter:hover,
+.sosmed .twitter:hover .tooltip,
+.sosmed .twitter:hover .tooltip::before {
+  background: #1da1f2; /* Twitter Blue */
+  color: #fff;
+}
+
+.sosmed .github:hover,
+.sosmed .github:hover .tooltip,
+.sosmed .github:hover .tooltip::before {
+  background: #333; /* GitHub Dark */
+  color: #fff;
+}
+
+
+/* Gaya untuk nama Sofyan Insomnia */
+.offcanvas-header h2.card-title {
+  color: white; /* Pastikan warna tetap putih */
+  margin-top: 10px; /* Beri sedikit jarak dari foto */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Agar lebih terbaca di atas video */
+}
