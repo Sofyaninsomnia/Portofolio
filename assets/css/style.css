@@ -17,7 +17,7 @@ html {
   transition: all 0.3s;
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: 25px;
   z-index: 9999;
 }
 
@@ -51,7 +51,6 @@ html {
   transform: rotate(45deg);
 }
 
-/* CSS untuk Offcanvas */
 .offcanvas {
   background-color: #343a40;
   color: white;
@@ -78,7 +77,7 @@ html {
   height: auto;
   z-index: -1;
   background-size: cover;
-  opacity: 0.5;
+  opacity: 0.9;
   filter: brightness(1.1);
   object-fit: cover;
 }
@@ -146,24 +145,24 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* Biarkan column jika Anda ingin tooltip di atas ikon */
+  flex-direction: column;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .sosmed .icon i {
-  color: #333; /* Warna ikon default (akan berubah saat hover) */
-  font-size: 24px; /* UKURAN IKON BOOTSTRAP, sesuaikan ini! */
+  color: #333;
+  font-size: 24px;
   transition: color 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .sosmed .tooltip {
   position: absolute;
-  top: 0; /* Awalnya di atas icon, akan bergerak ke -45px saat hover */
+  top: 0;
   font-size: 14px;
-  background: #fff; /* Ini akan berubah saat hover */
-  color: #fff; /* Warna teks tooltip default */
+  background: #fff;
+  color: #fff;
   padding: 5px 8px;
   border-radius: 5px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -239,9 +238,36 @@ html {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: Montserrat;
+  font-weight: bold;
   text-align: center;
   width: 100%;
   padding: 0 20px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+
+.image:hover {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.intro-container img {
+  width: 12em;
+  margin-right: 1em;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUp 1s ease forwards, move 10s ease-in-out infinite 1s;
+  z-index: 5;
 }
 
 .intro-heading {
@@ -263,9 +289,273 @@ html {
   animation: slideUp 1s ease 0.3s forwards;
 }
 
+.typed {
+  color: #fff;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUp 1s ease 0.6s forwards;
+}
+
+.typed-cursor {
+  opacity: 1;
+  animation: blink 0.7s infinite;
+}
+
+/* From Uiverse.io by ElsayedShamsEldeen */ 
+.rubik-container {
+  width: 50px;
+  height: 50px;
+  perspective: 350px;
+  margin: 20px auto;
+}
+
+.rubik {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate 15s infinite linear;
+}
+
+.kotak {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  color: rgb(21, 153, 214);
+  font-size: 7px;
+  text-align: center;
+  line-height: 50px;
+  background: transparent;
+  opacity: 0.9;
+  border: 1px solid;
+  border-image: linear-gradient(
+    90deg,
+    rgba(14, 8, 110, 1) 0%,
+    rgba(15, 15, 167, 1) 26%,
+    rgba(20, 45, 255, 1) 85%
+  );
+  box-shadow: 0 0 25px rgba(8, 178, 245, 0.61);
+}
+
+.front {
+  transform: translateZ(25px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(25px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(25px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(25px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(25px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(25px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.rubik-container:hover .rubik {
+  animation-play-state: paused;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+
+/* From Uiverse.io by Juanes200122 */
+#svg-global {
+  zoom: 1.2;
+  overflow: visible;
+}
+
+@keyframes fade-particles {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+#particles {
+  animation: fade-particles 5s infinite alternate;
+}
+.particle {
+  animation: floatUp linear infinite;
+}
+
+.p1 {
+  animation-duration: 2.2s;
+  animation-delay: 0s;
+}
+.p2 {
+  animation-duration: 2.5s;
+  animation-delay: 0.3s;
+}
+.p3 {
+  animation-duration: 2s;
+  animation-delay: 0.6s;
+}
+.p4 {
+  animation-duration: 2.8s;
+  animation-delay: 0.2s;
+}
+.p5 {
+  animation-duration: 2.3s;
+  animation-delay: 0.4s;
+}
+.p6 {
+  animation-duration: 3s;
+  animation-delay: 0.1s;
+}
+.p7 {
+  animation-duration: 2.1s;
+  animation-delay: 0.5s;
+}
+.p8 {
+  animation-duration: 2.6s;
+  animation-delay: 0.2s;
+}
+.p9 {
+  animation-duration: 2.4s;
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce-lines {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+#line-v1,
+#line-v2,
+#node-server,
+#panel-rigth,
+#reflectores,
+#particles {
+  animation: bounce-lines 3s ease-in-out infinite alternate;
+}
+#line-v2 {
+  animation-delay: 0.2s;
+}
+
+#node-server,
+#panel-rigth,
+#reflectores,
+#particles {
+  animation-delay: 0.4s;
+}
+
+.footer {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
 @keyframes slideUp {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0em) translateY(0em);
+  }
+  25% {
+    transform: translateY(-1em) translateX(-1em);
+    rotate: -10deg;
+  }
+  50% {
+    transform: translateY(1em) translateX(-1em);
+  }
+  75% {
+    transform: translateY(-1.25em) translateX(1em);
+    rotate: 10deg;
+  }
+  100% {
+    transform: translateX(0em) translateY(0em);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  #svg-global {
+    height: 100px;
+    width: auto;
+    zoom: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  #svg-global {
+    height: 80px;
   }
 }

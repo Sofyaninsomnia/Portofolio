@@ -1,217 +1,85 @@
-html {
-  scroll-behavior: smooth;
+/* From Uiverse.io by ElsayedShamsEldeen */ 
+.rubik-container {
+  width: 200px;
+  height: 200px;
+  perspective: 800px;
+  margin: 50px auto;
 }
 
-body {
-    margin: 0; /* Pastikan tidak ada margin default dari body */
-    padding: 0; /* Pastikan tidak ada padding default dari body */
-    overflow-x: hidden; /* Hindari scroll horizontal yang tidak diinginkan */
-    position: relative; /* Penting untuk z-index pada video background */
-}
-
-/* Video Background Utama */
-.fullscreen-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100vh; /* Gunakan vh untuk tinggi viewport */
-  width: auto;
-  height: auto;
-  z-index: -2; /* Pastikan paling belakang */
-  background-size: cover;
-  opacity: 0.5; /* Sesuaikan opasitas ke nilai valid antara 0 dan 1 */
-  filter: brightness(1.1);
-  object-fit: cover;
-}
-
-/* Wrapper untuk konten utama yang ada di atas video background */
-.main-content-wrapper {
-    position: relative; /* Penting agar z-index konten di dalamnya berfungsi relatif terhadap ini */
-    z-index: 1; /* Pastikan ini di atas video background */
-    min-height: 100vh; /* Agar bisa discroll dan tidak terpotong jika kontennya sedikit */
-    display: flex;
-    flex-direction: column;
-}
-
-/* Header */
-#header {
-    width: 100%;
-    position: sticky; /* Atau fixed, tergantung kebutuhan */
-    top: 0;
-    z-index: 1000; /* Pastikan header di atas konten lain */
-    background: transparent; /* Atau warna yang sesuai jika Anda ingin header terlihat */
-    padding: 15px 0; /* Sesuaikan padding agar tombol tidak terlalu mepet atas */
-}
-
-.button-menu {
-  font-family: inherit;
-  font-size: 18px;
-  background: linear-gradient(to bottom, #4dc7d9 0%,#66a6ff 100%);
-  color: white;
-  padding: 0.3em 0.6em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 25px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s;
-  position: fixed; /* Penting untuk posisi melayang */
-  top: 20px; /* Jarak dari atas */
-  right: 20px; /* Jarak dari kanan */
-  z-index: 9999; /* Sudah cukup tinggi */
-}
-
-/* ... (CSS untuk button-menu:hover, button-menu:active, button-menu i, button-menu .i-wrapper, button-menu:hover i - tetap sama) ... */
-
-/* CSS untuk Offcanvas */
-.offcanvas {
-  background-color: #343a40;
-  color: white;
-}
-
-#spaceVideoBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%; /* Ini akan mengisi offcanvas dengan baik */
-  width: auto;
-  height: auto;
-  z-index: -1;
-  background-size: cover;
-  opacity: 0.5;
-  filter: brightness(1.1);
-  object-fit: cover;
-}
-
-/* ... (CSS untuk offcanvas-header, offcanvas-title, offcanvas-body .nav-link, .offcanvas-body .nav-link:hover, .offcanvas-body .nav-link.active - tetap sama) ... */
-
-/* Sosmed */
-.sosmed {
-  display: inline-flex;
-  list-style: none;
+.rubik {
+  position: relative;
   width: 100%;
-  padding: 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-family: "Poppins", sans-serif;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate 15s infinite linear;
 }
 
-/* ... (CSS untuk sosmed .icon, sosmed .icon i, sosmed .tooltip, sosmed .tooltip::before, sosmed .icon:hover .tooltip, sosmed .icon:hover i, sosmed .icon:hover span, sosmed .icon:hover .tooltip, warna spesifik sosmed - tetap sama) ... */
-
-/* Gaya untuk nama Sofyan Insomnia di offcanvas */
-.offcanvas-header h2.card-title {
-  color: white;
-  margin-top: 10px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-
-/* Kontainer untuk teks perkenalan dan konten utama */
-.container.main-page-content {
-    /* Bootstrap .container sudah memiliki max-width dan padding. */
-    /* Kita bisa tambahkan padding-top untuk mengkompensasi header jika diperlukan, atau atur tinggi minimum */
-    min-height: calc(100vh - 80px); /* Contoh: 100vh dikurangi tinggi header (sekitar 80px) */
-    padding-top: 80px; /* Untuk memberi ruang dari header fixed */
-    position: relative; /* Penting untuk positioning absolute intro-text-container */
-    display: flex; /* Untuk flexbox agar konten bisa diatur lebih mudah */
-    flex-direction: column; /* Konten disusun vertikal */
-    align-items: center; /* Pusatkan konten horizontal */
-    justify-content: center; /* Pusatkan konten vertikal di halaman awal */
-    color: white; /* Default text color for this section */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Agar teks terlihat di atas video */
-}
-
-
-/* Style untuk kontainer teks perkenalan */
-#intro-text-container {
-  position: absolute; /* Tetap absolute relatif terhadap .container.main-page-content */
-  bottom: 20%; /* Posisi awal di bagian bawah container */
-  left: 50%;
-  transform: translateX(-50%); /* Untuk membuat teks berada di tengah horizontal */
-  color: white; /* Pastikan warnanya jelas */
+.kotak {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  color: rgb(21, 153, 214);
+  font-size: 18px;
   text-align: center;
-  opacity: 0; /* Awalnya tidak terlihat */
-  z-index: 10; /* Pastikan di atas konten dan video background */
-  width: 80%; /* Batasi lebar agar tidak terlalu melebar di layar besar */
-  max-width: 600px; /* Batasi lebar maksimal */
-  /* Remove white-space: nowrap; jika Anda ingin teks wrap di layar kecil */
-  /* Remove overflow: hidden; jika Anda ingin animasi tidak terpotong di awal */
+  line-height: 200px;
+  background: transparent;
+  opacity: 0.9;
+  border: 2px solid;
+  border-image: linear-gradient(
+    90deg,
+    rgba(14, 8, 110, 1) 0%,
+    rgba(15, 15, 167, 1) 26%,
+    rgba(20, 45, 255, 1) 85%
+  );
+  box-shadow: 0 0 100px rgba(8, 178, 245, 0.61);
 }
 
-#intro-text-container h1.intro-name {
-  font-size: 2.5em;
-  margin-bottom: 5px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
-  /* Responsif font size untuk mobile */
-  @media (max-width: 768px) {
-    font-size: 1.8em;
-  }
+.front {
+  transform: translateZ(100px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 }
 
-#intro-text-container p.intro-short {
-  font-size: 1.2em;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-
-  /* Responsif font size untuk mobile */
-  @media (max-width: 768px) {
-    font-size: 0.9em;
-  }
+.back {
+  transform: rotateY(180deg) translateZ(100px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 }
 
-/* Animasi muncul dari bawah ke atas */
-@keyframes slideUp {
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(100px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(100px);
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+}
+
+.rubik-container:hover .rubik {
+  animation-play-state: paused;
+}
+
+@keyframes rotate {
   0% {
-    transform: translate(-50%, 150%); /* Mulai dari bawah lebih jauh */
-    opacity: 0;
+    transform: rotateX(0) rotateY(0) rotateZ(0);
   }
+
   100% {
-    transform: translate(-50%, 0%); /* Bergerak ke posisi akhir */
-    opacity: 1;
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
   }
-}
-
-/* Terapkan animasi ke kontainer */
-#intro-text-container {
-  animation: slideUp 1.5s ease-out 0.5s forwards;
-}
-
-/* CSS untuk konten yang ada di bawah intro-text-container, misalnya div 1000px */
-/* Anda bisa menghapus p "Ini adalah halaman utama Anda..." jika tidak diperlukan */
-.container.main-page-content > p,
-.container.main-page-content > div[style="height: 1000px; background-color: #f8f9fa;"] {
-    margin-top: 300px; /* Beri jarak agar tidak langsung menutupi intro-text */
-    width: 100%; /* Pastikan mengisi lebar container */
-    padding: 20px; /* Tambahkan padding agar konten tidak mepet tepi */
-    box-sizing: border-box; /* Hitung padding dalam lebar/tinggi */
-}
-
-/* Media queries untuk responsivitas umum */
-@media (max-width: 992px) {
-    /* Penyesuaian untuk tablet */
-    #intro-text-container {
-        bottom: 15%; /* Sesuaikan posisi bawah di tablet */
-    }
-}
-
-@media (max-width: 576px) {
-    /* Penyesuaian untuk mobile */
-    .button-menu {
-        top: 10px;
-        right: 10px;
-        padding: 0.2em 0.5em;
-        font-size: 16px;
-    }
-    .button-menu .i-wrapper {
-        width: 30px;
-        height: 30px;
-    }
-    #intro-text-container {
-        bottom: 10%; /* Sesuaikan posisi bawah di mobile */
-        width: 90%; /* Lebar lebih besar di mobile */
-    }
 }
